@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    #title {
+      display: inline-block;
+    }
+    .color-box {
+      display: inline-block;
+      width: 100px;
+      height: 30px;
+      color: white;
+      text-align: center;
+    }
+  </style>
+  <title>図解</title>
+</head>
+
+<body width="auto">
+
+  <!-- 色を選ぶセレクトボックス -->
+  <span class="color-box">SELECTED</span>
+  <span class="color-box">_</span>
+  <span class="color-box">_</span>
+  <span class="color-box">_</span>
+  <span class="color-box">_</span>
+  <span class="color-box">_</span>
+  <span class="color-box">_</span>
+
+  <!-- キャンバス -->
+  <div width="auto">
+    <canvas id="draw-area" width="1920px" height="1200px" style="border: 1px solid #000000;"></canvas>
+  </div>
+  <div>
+    <button id="clear-button">全消し</button>
+  </div>
+  <script src="./main.js"></script>
+  <script>
+    // 初期表示
+    const colors = ['black', 'red', 'blue', 'green', 'orange', 'pink', 'gray'];
+    let colorBoxes = document.getElementsByClassName("color-box");
+    for (let index = 0; index < colorBoxes.length; index++) {
+      const element = colorBoxes[index];
+      const color = colors[index];
+      element.style.backgroundColor = color;
+    }
+
+    // クリックされたら、その色を選択して、選択されていることがわかるようにする
+    function onSelected() {
+      console.log("onSelected");
+      const color = this.style.backgroundColor;
+      for (let index = 0; index < colorBoxes.length; index++) {
+        colorBoxes[index].innerHTML = "_";
+      }
+      // SELECTEDと文字を入れる
+      this.innerHTML = "SELECTED";
+
+      // 色を設定する
+      const context = document.querySelector('#draw-area').getContext('2d');
+      context.strokeStyle = color;
+    }
+    for (let index = 0; index < colorBoxes.length; index++) {
+      colorBoxes[index].addEventListener('click', onSelected);
+    };
+
+    // クリックだけじゃなく数字キーでも選べるようにする
+    document.addEventListener('keydown', (event) => {
+      console.log(event.key);
+      if (['1', '2', '3', '4', '5', '6', '7'].indexOf(event.key) > -1) {
+        console.log(event.key);
+        colorBoxes[parseInt(event.key) - 1].click();
+      }
+    });
+  </script>
+</body>
+
+</html>
