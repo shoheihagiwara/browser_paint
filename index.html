@@ -13,7 +13,7 @@
       display: inline-block;
       width: 100px;
       height: 30px;
-      color: white;
+      color: lightgray;
       text-align: center;
     }
   </style>
@@ -24,6 +24,7 @@
 
   <!-- 色を選ぶセレクトボックス -->
   <span class="color-box">SELECTED</span>
+  <span class="color-box">_</span>
   <span class="color-box">_</span>
   <span class="color-box">_</span>
   <span class="color-box">_</span>
@@ -41,7 +42,7 @@
   <script src="./main.js"></script>
   <script>
     // 初期表示
-    const colors = ['black', 'red', 'blue', 'green', 'orange', 'pink', 'gray'];
+    const colors = ['black', 'red', 'blue', 'green', 'orange', 'pink', 'gray', 'white'];
     let colorBoxes = document.getElementsByClassName("color-box");
     for (let index = 0; index < colorBoxes.length; index++) {
       const element = colorBoxes[index];
@@ -59,9 +60,10 @@
       // SELECTEDと文字を入れる
       this.innerHTML = "SELECTED";
 
-      // 色を設定する
+      // 色と太さを設定する
       const context = document.querySelector('#draw-area').getContext('2d');
-      context.strokeStyle = color;
+      context.strokeStyle = color; // 色
+      context.lineWidth = color == 'white' ? 10 : 1; // 線の太さ
     }
     for (let index = 0; index < colorBoxes.length; index++) {
       colorBoxes[index].addEventListener('click', onSelected);
@@ -70,7 +72,7 @@
     // クリックだけじゃなく数字キーでも選べるようにする
     document.addEventListener('keydown', (event) => {
       console.log(event.key);
-      if (['1', '2', '3', '4', '5', '6', '7'].indexOf(event.key) > -1) {
+      if (['1', '2', '3', '4', '5', '6', '7', '8'].indexOf(event.key) > -1) {
         console.log(event.key);
         colorBoxes[parseInt(event.key) - 1].click();
       }

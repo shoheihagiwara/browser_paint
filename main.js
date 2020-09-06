@@ -26,7 +26,7 @@ window.addEventListener('load', () => {
     // MDN CanvasRenderingContext2D: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineJoin
     context.lineCap = 'round'; // 丸みを帯びた線にする
     context.lineJoin = 'round'; // 丸みを帯びた線にする
-    context.lineWidth = 1; // 線の太さ
+    //context.lineWidth = 1; // 線の太さ
     //context.strokeStyle = 'black'; // 線の色
 
     // 書き始めは lastPosition.x, lastPosition.y の値はnullとなっているため、
