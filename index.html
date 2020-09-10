@@ -31,6 +31,7 @@
   <span class="color-box">_</span>
   <span class="color-box">_</span>
   <span class="color-box">_</span>
+  <input type="text" name="image" id="image" style="width: 500px;">
 
   <!-- キャンバス -->
   <div width="auto">
@@ -77,6 +78,22 @@
         colorBoxes[parseInt(event.key) - 1].click();
       }
     });
+
+    // テキストボックスに
+    const imagePath = document.getElementById('image');
+    imagePath.addEventListener('keydown', function() {
+      if (event.key === 'Enter') {
+        console.log(event.key)
+        const image = new Image();
+        image.src = this.value;
+        image.onload = function() {
+          const context = document.querySelector('#draw-area').getContext('2d');
+          //context.drawImage(chara, 0, 0, 1920, 1200);  // ★ここを変更★
+          context.drawImage(this, 0, 0);  // ★ここを変更★
+        }
+      }
+    });
+
   </script>
 </body>
 
