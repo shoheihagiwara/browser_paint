@@ -7,7 +7,10 @@ Access https://shoheihagiwara.github.io/browser_paint/ and star drawing.
 
 ## Usage
 
-Change color by clicking color box. Or you can press number key 1 ~ 7.
+- Draw by holding down your left mouse button and move your mouse.
+- Choose color by clicking color box or by pressing number key 1 ~ 7.
+- Load your image by entering a path to a image file and hit enter
+
 
 
 ### Prerequisites
