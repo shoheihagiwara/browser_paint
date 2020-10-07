@@ -85,7 +85,7 @@
       if (event.key === 'Enter') {
         console.log(event.key)
         const image = new Image();
-        image.src = this.value;
+        image.src = "file://" + this.value;
         image.onload = function() {
           const context = document.querySelector('#draw-area').getContext('2d');
           //context.drawImage(chara, 0, 0, 1920, 1200);  // ★ここを変更★
