@@ -29,6 +29,10 @@ window.addEventListener('load', () => {
     //context.lineWidth = 1; // 線の太さ
     //context.strokeStyle = 'black'; // 線の色
 
+    // このままだと、座標がなぜかずれるので補正する
+    x = x - 5;
+    y = y - 35;
+
     // 書き始めは lastPosition.x, lastPosition.y の値はnullとなっているため、
     // クリックしたところを開始点としている。
     // この関数(draw関数内)の最後の2行で lastPosition.xとlastPosition.yに
@@ -38,9 +42,6 @@ window.addEventListener('load', () => {
       // ドラッグ開始時の線の開始位置
       context.moveTo(x, y);
     } else {
-      // このままだと、座標がなぜかずれるので補正する
-      x = x - 5;
-      y = y - 35;
       // ドラッグ中の線の開始位置
       context.moveTo(lastPosition.x, lastPosition.y);
     }
