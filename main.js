@@ -35,12 +35,12 @@ window.addEventListener('load', () => {
     // 現在のx, y座標を記録することで、次にマウスを動かした時に、
     // 前回の位置から現在のマウスの位置まで線を引くようになる。
     if (lastPosition.x === null || lastPosition.y === null) {
-      // なぜかずれるので補正する
-      x = x - 5;
-      y = y - 35;
       // ドラッグ開始時の線の開始位置
       context.moveTo(x, y);
     } else {
+      // このままだと、座標がなぜかずれるので補正する
+      x = x - 5;
+      y = y - 35;
       // ドラッグ中の線の開始位置
       context.moveTo(lastPosition.x, lastPosition.y);
     }
